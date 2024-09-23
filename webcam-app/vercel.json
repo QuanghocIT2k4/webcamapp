@@ -4,7 +4,7 @@
       { "src": "server.js", "use": "@vercel/node" }
     ],
     "routes": [
-      { "src": "/", "dest": "/webcam-app/index.html" }
+      { "src": "/", "dest": "C:/Users/ADMIN/Documents/PBL/webcam-app/index.html" }
     ]
   }
   
