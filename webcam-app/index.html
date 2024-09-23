@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam App</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Thêm Font Awesome để sử dụng biểu tượng -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <h1>Webcam App</h1>
+
+    <div>
+        <video id="webcam" autoplay></video>
+    </div>
+
+    <!-- Nút bật/tắt webcam -->
+    <div>
+        <button id="onoffBtn"><i class="fas fa-video"></i> Bật webcam</button>
+    </div>
+
+   <!-- Khu vực nút phóng to màn hình -->
+   <div id="fullscreenSection" class="button-container" style="display: none;">
+        <button id="fullscreenBtn"><i class="fas fa-expand"></i> Toàn màn hình</button>
+   </div>
+
+    <!-- Khu vực các nút chức năng -->
+    <div id="captureSection" class="button-container" style="display: none;">
+        <button id="capBtn"><i class="fas fa-camera"></i> Chụp ảnh</button>
+        <canvas id="snapCanvas" style="display: none;"></canvas>
+    </div>
+
+    <!-- Khu vực hiển thị ảnh đã chụp và các nút tải xuống/hủy -->
+    <div id="capturedImageSection" style="display: none; text-align: center; margin-top: 20px;">
+        <img id="capturedImage" src="" alt="Captured Image" style="width: 640px; height: 480px; border: 1px solid #ccc;">
+        <div style="margin-top: 10px;">
+            <button id="downloadBtn"><i class="fas fa-download"></i> Tải xuống</button>
+            <button id="clearBtn"><i class="fas fa-times"></i> Hủy</button>
+        </div>
+    </div>
+
+    <!-- Khu vực quay video -->
+    <div id="videoSection" style="display: none;">
+        <button id="startRecBtn"><i class="fas fa-video"></i> Bắt đầu quay video</button>
+        <button id="stopRecBtn" style="display: none;"><i class="fas fa-stop"></i> Dừng quay video</button>
+    </div>
+
+    <!-- Khu vực hiển thị video đã quay và các nút tải xuống/hủy -->
+    <div id="capturedVideoSection" style="display: none; text-align: center; margin-top: 20px;">
+        <video id="recordedVideo" controls style="width: 640px; height: 480px; border: 1px solid #ccc;"></video>
+        <div style="margin-top: 10px;">
+            <button id="downloadVideoBtn"><i class="fas fa-download"></i> Tải xuống video</button>
+            <button id="clearVideoBtn"><i class="fas fa-times"></i> Hủy</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
