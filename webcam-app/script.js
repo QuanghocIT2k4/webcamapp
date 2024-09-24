@@ -148,18 +148,31 @@ function uploadImage(imageData) {
     const formData = new FormData();
     formData.append('image', dataURItoBlob(imageData), 'captured_image.png');
 
-    fetch('/upload', {
+    // Sử dụng đúng cổng và địa chỉ backend (thay thế localhost:3000 nếu server đang chạy trên cổng 3000)
+    fetch('http://localhost:3000/upload', { 
         method: 'POST',
         body: formData
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Lỗi khi upload ảnh: ' + response.statusText);
+        }
+        return response.json();
+    })
     .then(data => {
-        alert('Upload thành công! Đường dẫn ảnh: ' + data.file.path);
+        if (data && data.file && data.file.path) {
+            alert('Upload thành công! Đường dẫn ảnh: ' + data.file.path);
+        } else {
+            alert('Upload thành công nhưng không có đường dẫn ảnh được trả về.');
+        }
     })
     .catch(error => {
         console.error('Lỗi khi upload ảnh:', error);
+        alert('Đã xảy ra lỗi khi upload ảnh. Vui lòng thử lại.');
     });
 }
+
+
 
 // Chuyển đổi từ dataURL (Base64) thành Blob
 function dataURItoBlob(dataURI) {
