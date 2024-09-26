@@ -5,11 +5,14 @@ const fs = require('fs');
 const cors = require('cors');
 
 const app = express();
+
+// Cấu hình CORS để cho phép cả localhost và Vercel
 app.use(cors({
-    origin: 'http://127.0.0.1:5500',  // Chỉ cho phép nguồn gốc này (có thể thêm localhost nếu cần)
+    origin: ['http://127.0.0.1:5500', 'https://webcamapp-iota.vercel.app'],  // Thêm miền của Vercel
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+
 // Cấu hình Multer cho ảnh và video
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -27,7 +30,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
     storage: storage,
-    limits: { fileSize: 500 * 1024 * 1024 }  // Tăng giới hạn kích thước để xử lý video lớn (500MB)
+    limits: { fileSize: 500 * 1024 * 1024 }  // Giới hạn kích thước video lớn (500MB)
 });
 
 // Endpoint xử lý upload ảnh
