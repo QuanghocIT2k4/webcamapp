@@ -1,20 +1,13 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "api/upload.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "webcam-app/index.html",
-      "use": "@vercel/static"
-    }
+    { "src": "api/upload.js", "use": "@vercel/node" },
+    { "src": "webcam-app/index.html", "use": "@vercel/static" }
   ],
-    "routes": [
-      { "src": "/api/upload", "dest": "/api/upload.js" },
-      { "src": "/api/upload-video", "dest": "/api/upload.js" },
-      { "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg))", "dest": "/webcam-app/$1" },
-      { "src": "/(.*)", "dest": "/webcam-app/index.html" }
-    ]
-  
+  "routes": [
+    { "src": "/api/upload", "dest": "/api/upload.js" },
+    { "src": "/api/upload-video", "dest": "/api/upload.js" },
+    { "src": "/webcam-app/(.*\\.(js|css|png|jpg|jpeg|gif|svg))", "dest": "/webcam-app/$1" },
+    { "src": "/(.*)", "dest": "/webcam-app/index.html" }
+  ]
 }
