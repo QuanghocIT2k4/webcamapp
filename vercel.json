@@ -7,7 +7,7 @@
   "routes": [
     { "src": "/api/upload", "dest": "/api/upload.js" },
     { "src": "/api/upload-video", "dest": "/api/upload.js" },
-    { "src": "/webcam-app/(.*\\.(js|css|png|jpg|jpeg|gif|svg))", "dest": "/webcam-app/$1" },
+    { "src": "/webcam-app/(.*)", "dest": "/webcam-app/$1" },
     { "src": "/(.*)", "dest": "/webcam-app/index.html" }
   ]
 }
