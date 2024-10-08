@@ -1,34 +1,112 @@
+/* Căn chỉnh toàn bộ trang */
 body {
     font-family: Arial, sans-serif;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    flex-direction: column; /* Đặt hướng dọc để tiêu đề lên trên */
+    align-items: center; /* Căn giữa theo chiều ngang */
+    justify-content: flex-start; /* Đưa tiêu đề lên trên cùng */
     height: 100vh;
     margin: 0;
     background-color: #f4f4f4;
+    text-align: center;
+}
+
+/* Phần ứng dụng webcam */
+#webcamApp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Đảm bảo phần webcamApp chiếm toàn bộ chiều rộng */
+    height: calc(100vh - 100px); /* Đảm bảo chiếm toàn bộ chiều cao trang trừ phần tiêu đề */
+    position: relative;
 }
 
 /* Định dạng tiêu đề */
 h1 {
+    margin-top: 10px; /* Tạo khoảng cách 10px từ đỉnh */
     margin-bottom: 20px;
     text-align: center;
+    width: 100%; /* Đảm bảo tiêu đề căn giữa */
+}
+
+/* Định dạng cho phần đăng nhập/đăng ký */
+#authSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Căn giữa theo chiều ngang */
+    max-width: 400px; /* Đặt chiều rộng tối đa */
+}
+
+#authSection h2 {
+    margin-bottom: 10px;
+}
+
+/* Định dạng cho phần form đăng ký/đăng nhập */
+#authSection form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+#authSection input {
+    padding: 10px;
+    font-size: 16px;
+    width: 80%;
+    max-width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#authSection button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: green;
+    color: #fff;
+    transition: background-color 0.3s;
+    width: 100px;
+    height: 40px;
+}
+
+#authSection button:hover {
+    background-color: #00b33f;
 }
 
 /* Định dạng video */
 video {
+    margin: 0 auto; /* Căn giữa video */
     border: 2px solid #ddd;
     width: 640px;
     height: 360px;
     background-color: #000;
 }
 
-/* Phần chứa các nút */
-div {
-    margin: 10px;
+/* Căn chỉnh các nút điều khiển */
+.controls-container {
+    display: flex;
+    justify-content: center; /* Căn giữa các nút điều khiển */
+    align-items: center; 
+    flex-direction: column; /* Đặt hướng dọc cho các nút */
+    gap: 20px; /* Khoảng cách giữa các nút */
+    margin-top: 20px;
 }
 
-/* Định dạng các nút chung */
+/* Định dạng các nút điều khiển */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Khoảng cách giữa các nút trong button-container */
+}
+
 button {
     padding: 10px 20px;
     font-size: 16px;
@@ -39,69 +117,36 @@ button {
     color: #fff;
     transition: background-color 0.3s;
     width: 200px;
-    margin-bottom: 10px;
     height: 50px;
-    justify-content: flex-start; /* Đẩy nội dung về phía trái */
-    align-items: center;         /* Căn giữa theo trục dọc */
-    padding-left: 10px;    
-}
-button i {
-    margin-right: 10px; /* Khoảng cách giữa icon và văn bản */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Đổi màu nút khi di chuột qua */
+/* Đổi màu khi di chuột qua nút */
 button:hover {
     background-color: #00b33f;
 }
 
 /* Định dạng nút bật/tắt webcam */
 #onoffBtn {
-    background-color: green;
-}
-
-/* Nút bật webcam màu đỏ khi tắt */
-#onoffBtn.active {
     background-color: red;
 }
 
-/* Định dạng nút tắt */
-button i {
-    margin-right: 10px;
-}
-
-/* Định dạng canvas (vô hình) */
-canvas {
-    border: 1px solid #ddd;
-}
-
-/* Định dạng khoảng cách và căn chỉnh các nút trong #captureSection */
-#captureSection, #fullscreenSection {
+/* Định dạng phần hiển thị ảnh/video đã chụp */
+#capturedImageSection {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column; /* Đặt hướng dọc cho hình ảnh và các nút */
+    align-items: center; /* Căn giữa hình ảnh */
+    justify-content: center; /* Căn giữa theo chiều dọc */
+    margin-top: 20px;
+    width: 100%; /* Đảm bảo chiếm toàn bộ chiều rộng */
 }
 
-#captureSection button, #fullscreenSection button {
-    width: 200px;
-    height: 50px;
-}
-
-/* Định dạng các nút trong phần tải xuống và hủy ảnh/video */
-#capturedImageSection button, #capturedVideoSection button {
-    font-size: 14px;
-    color: #007bff;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    margin: 0 10px;
-    text-decoration: underline;
-}
-
-/* Định dạng ảnh đã chụp */
+/* Định dạng hình ảnh đã chụp */
 #capturedImage {
-    width: 320px;
-    height: 240px;
+    max-width: 100%; /* Giúp hình ảnh không vượt quá chiều rộng của khung chứa */
+    height: auto; /* Để chiều cao tự động điều chỉnh */
     border: 1px solid #ccc;
     margin-bottom: 10px;
 }
@@ -114,13 +159,63 @@ canvas {
     margin-bottom: 10px;
 }
 
-.button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* Định dạng cho các nút tải xuống và hủy */
+#downloadBtn, #clearBtn, #downloadVideoBtn, #clearVideoBtn {
+    font-size: 10px; /* Điều chỉnh kích thước chữ */
+    padding: 2px 5px; /* Điều chỉnh khoảng cách bên trong */
+    width: auto; /* Tự động điều chỉnh chiều rộng theo nội dung */
+    height: auto; /* Tự động điều chỉnh chiều cao theo nội dung */
+    display: inline-block; /* Đảm bảo các nút hiển thị ngang hàng */
+    margin-top: 5px; /* Khoảng cách với hình ảnh/video */
+    background-color: #0b1f1969;
+}
+
+#downloadBtn:hover, #clearBtn:hover, #downloadVideoBtn:hover, #clearVideoBtn:hover {
+    background-color: #0b1f1969;
+}
+
+/* Định dạng phần QR code */
+#qrCodeSection {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#qrCodeImage {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ccc;
     margin-top: 10px;
 }
 
-.button-container button {
-    margin: 5px 0;
+#fileInfoSection {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Căn chỉnh icon trong nút */
+button i {
+    margin-right: 10px;
+}
+
+/* Ẩn canvas */
+canvas {
+    display: none;
+    border: 1px solid #ddd;
+}
+
+/* Định dạng cho phần video */
+#videoSection, #capturedImageSection, #capturedVideoSection {
+    display: none;
+}
+
+/* Khu vực hiển thị hình ảnh hoặc video đã chụp */
+#capturedImageSection img, #capturedVideoSection video {
+    max-width: 640px; /* Giúp hình ảnh không vượt quá chiều rộng của khung chứa */
+    height: auto; /* Để chiều cao tự động điều chỉnh */
+    margin-top: 10px;
+    display: block; /* Đảm bảo hình ảnh được hiển thị như một khối */
+    margin-left: auto; /* Căn giữa */
+    margin-right: auto; /* Căn giữa */
 }
